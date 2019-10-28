@@ -10,13 +10,14 @@ const commentSchema = new mongoose.Schema({
 const cellSchema = new mongoose.Schema({
   row: { type: String, required: true },
   column: { type: String, required: true },
-  text: { type: String },
-  bold: { type: Boolean, required: true },
-  cursive: { type: Boolean, required: true },
-  strikethrough: { type: Boolean, required: true },
-  bkcolor: { type: String },
-  color: { type: String },
-  alignment: { type: String },
+  text: { type: String, default: '' },
+  bold: { type: Boolean, required: true, default: false },
+  cursive: { type: Boolean, required: true, default: false },
+  strikethrough: { type: Boolean, required: true, default: false },
+  bkcolor: { type: String, required: true, default: 'white' },
+  font: { type: String, required: true, default: 'Cambria' },
+  color: { type: String, required: true, default: 'black' },
+  alignment: { type: String, required: true, default: 'left' },
   comments: [commentSchema]
 })
 

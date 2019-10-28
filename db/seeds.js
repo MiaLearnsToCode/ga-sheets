@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const { dbURI } = require('../config/environment')
 const Sheet = require('../models/Sheet')
 const User = require('../models/User')
+const cells = require('../lib/createCells')
 
 mongoose.connect(
   dbURI,
@@ -31,12 +32,14 @@ mongoose.connect(
           {
             name: 'First', 
             token: 'firstsheettest',
-            users: [users[0], users[1]]
+            users: [users[0], users[1]],
+            cells: cells
           },
           {
             name: 'Second',
             token: 'secondsheettest',
-            users: [users[0], users[1]]
+            users: [users[0], users[1]],
+            cells: cells
           }
         ]
         )
