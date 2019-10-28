@@ -41,7 +41,7 @@ mongoose.connect(
         ]
         )
       })
-      .then(sheets => console.log(`${sheets.length} created`)) // if create goes well, log a sucess message
+      .then(sheets => console.log(`${sheets.length} sheets created`)) // if create goes well, log a sucess message
       .catch(err => console.log(err)) // if not log the error
       .finally(() => mongoose.connection.close()) // no matter what close the connction at the end, pass or fail
   }
