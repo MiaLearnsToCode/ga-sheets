@@ -1,6 +1,6 @@
 const express = require('express')
-const { port, dbURI } = require('./config/environment')
 const app = express()
+const { port, dbURI } = require('./config/environment')
 
 const mongoose = require('mongoose')
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('Mongoose connected'))
