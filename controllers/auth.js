@@ -8,7 +8,7 @@ function register(req, res) {
   User
     .create(req.body)
     .then(user => {
-      res.status(201).json({ message: `Waheyyy! You've successfully registered ${user.username}`})
+      res.status(201).json({ message: `Waheyyy! You've successfully registered ${user.username}` })
     })
     .catch(err => console.log(err))
 }
@@ -22,7 +22,7 @@ function login(req, res) {
         throw new Error('Unauthorised 1')
       }
       const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '12h' })
-      res.status(200).json({ message: `You're in ${user.username}, welcome back.`}, token)
+      res.status(200).json({ message: `You're in ${user.username}, welcome back.`, token: token })
     })
     .catch(err => console.log(err))
 }
