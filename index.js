@@ -8,4 +8,10 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }, () 
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
-app.listen(port, () => console.log(`App is listening on ${port} port`))
+const logger = require('./lib/logger')
+app.use(logger)
+
+const router = require('./config/router')
+app.use('/api', router)
+
+app.listen(port, () => console.log(`App is listening on port ${port}`))
