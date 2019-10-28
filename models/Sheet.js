@@ -27,11 +27,6 @@ const sheetSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  token: {
-    type: String,
-    required: true,
-    unique: true
-  },
   cells: [cellSchema],
   users: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 })

@@ -30,14 +30,12 @@ mongoose.connect(
         console.log(`${users.length} users created`)
         return Sheet.create([ // creating an array of new animals
           {
-            name: 'First', 
-            token: 'firstsheettest',
+            name: 'First',
             users: [users[0], users[1]],
             cells: cells
           },
           {
             name: 'Second',
-            token: 'secondsheettest',
             users: [users[0], users[1]],
             cells: cells
           }
