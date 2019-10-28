@@ -15,7 +15,7 @@ const cellSchema = new mongoose.Schema({
   cursive: { type: Boolean, required: true },
   strikethrough: { type: Boolean, required: true },
   bkcolor: { type: String },
-  color: { type: String }, 
+  color: { type: String },
   alignment: { type: String },
   comments: [commentSchema]
 })
@@ -30,8 +30,9 @@ const sheetSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true
-  }, 
-  cells: [cellSchema]
+  },
+  cells: [cellSchema],
+  users: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 })
 
 sheetSchema.plugin(require('mongoose-unique-validator'))

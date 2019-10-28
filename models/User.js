@@ -1,12 +1,11 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
-const sheets = require('./Sheet')
+
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  sheets: [{ type: Schema.Types.ObjectId, ref: 'Sheet' }]
+  password: { type: String, required: true }
 })
 
 userSchema.plugin(require('mongoose-unique-validator'))
