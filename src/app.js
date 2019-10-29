@@ -68,6 +68,18 @@ const useStyles = makeStyles(theme => ({
     overflow: 'auto'
   },
   card: {
+    height: '200px',
+    width: '200px',
+    marginRight: '100px',
+    display: 'flex',
+    alignItems: 'space-around'
+  },
+  subtitle: {
+    marginTop: '20px',
+    fontSize: '20px',
+    color: 'grey'
+  },
+  cardLong: {
     height: '50%',
     backgroundColor: '#daeddf',
     borderRadius: '50px',
@@ -76,18 +88,25 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(5),
     boxShadow: 'none'
   },
-  cardContent: {
+  cardLongContent: {
     flexGrow: 1,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center'
   },
   greyContainer: {
-    padding: '0px',
+    padding: '50px',
     margin: '0px',
     backgroundColor: '#e8ebe8', 
-    height: '30vh', 
-    maxWidth: '100vw'
+    height: '40vh', 
+    maxWidth: '100vw',
+    display: 'flex',
+    alignItems: 'center'
+  },
+  icon: {
+    color: 'green',
+    margin: '-5px 10px',
+    fontSize: '30px'
   }
 }))
 
