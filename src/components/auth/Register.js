@@ -9,25 +9,29 @@ import Grid from '@material-ui/core/Grid'
 import LockOpenIcon from '@material-ui/icons/LockOpen'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
+import axios from 'axios'
 
 class Register extends React.Component {
-  // constructor() {
-  //   super()
+  constructor() {
+    super()
 
-  //   this.state = { data: {}, error: '' }
-  //   this.handleChange = this.handleChange.bind(this)
-  //   this.handleSubmit = this.handleSubmit.bind(this)
-  // }
+    this.state = { data: {}, error: '' }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
 
-  // handleChange(e) {
-  //   const data = { ...this.state.data, [e.target.name]: e.target.value }
-  //   const errors = { ...this.state.errors, [e.target.name]: '' }
-  //   console.log({ data: data, errors: errors })
-  // }
+  handleChange(e) {
+    const data = { ...this.state.data, [e.target.name]: e.target.value }
+    const error = { ...this.state.error, [e.target.name]: '' }
+    this.setState({ data: data, error: error })
+  }
 
-  // handleSubmit(e) {
-
-  // }
+  handleSubmit(e) {
+    e.preventDefault()
+    axios.post('/api/register', this.state.data)
+      .then(() => this.props.history.push('/'))
+      .catch(err => console.log( err.response.data.error ))
+  }
   
   render() {
     const classes = this.props.classes
@@ -41,7 +45,7 @@ class Register extends React.Component {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={this.handleSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -51,6 +55,7 @@ class Register extends React.Component {
               label="Username"
               name="username"
               autoFocus
+              onChange={this.handleChange}
             />
             <TextField
               variant="outlined"
@@ -61,6 +66,7 @@ class Register extends React.Component {
               label="Email Address"
               name="email"
               autoFocus
+              onChange={this.handleChange}
             />         
             <TextField
               variant="outlined"
@@ -71,6 +77,7 @@ class Register extends React.Component {
               label="Password"
               type="password"
               id="password"
+              onChange={this.handleChange}
             />
             <TextField
               variant="outlined"
@@ -81,6 +88,7 @@ class Register extends React.Component {
               label="Password Confirmation"
               type="password"
               id="password"
+              onChange={this.handleChange}
             />
             <Button
               type="submit"
