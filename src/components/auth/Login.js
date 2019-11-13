@@ -31,8 +31,6 @@ class Login extends React.Component {
     axios.post('/api/login', this.state.data)
       .then(res => {
         Auth.setToken(res.data.token)
-        console.log(res.data)
-        console.log(this.props)
         this.props.history.push('/dashboard')
       })
       .catch(() => this.setState({ error: 'Invalid Credentials' }))
@@ -40,7 +38,6 @@ class Login extends React.Component {
   
   render() {
     const classes = this.props.classes
-    console.log(this.props)
     return (
       <Container component="main" maxWidth="sm">
         <CssBaseline />
