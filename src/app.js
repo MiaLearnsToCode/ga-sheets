@@ -120,9 +120,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/dashboard' render={() => <Dashboard classes={classes} />} />
-        <Route path='/register' render={() => <Register classes={classes} />} />
-        <Route exact path='/' render={() => <Login classes={classes} />}/>
+        <Route path='/dashboard' render={props => <Dashboard {...props} classes={classes} />} />
+        <Route path='/register' render={props => <Register {...props} classes={classes} />} />
+        <Route exact path='/' render={props => <Login {...props} classes={classes}/>} />
       </Switch>
     </BrowserRouter>
   )

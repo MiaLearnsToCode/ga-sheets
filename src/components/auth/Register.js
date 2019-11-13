@@ -11,6 +11,21 @@ import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 
 class Register extends React.Component {
+  // constructor() {
+  //   super()
+
+  //   this.state = { data: {}, error: '' }
+  //   this.handleChange = this.handleChange.bind(this)
+  //   this.handleSubmit = this.handleSubmit.bind(this)
+  // }
+
+  // handleChange(e) {
+
+  // }
+
+  // handleSubmit(e) {
+
+  // }
   
   render() {
     const classes = this.props.classes
