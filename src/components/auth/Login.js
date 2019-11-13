@@ -1,4 +1,6 @@
 import React from 'react'
+import axios from 'axios'
+import Auth from '../../lib/Auth'
 
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
@@ -11,9 +13,34 @@ import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 
 class Login extends React.Component {
+  constructor() {
+    super()
+
+    this.state = { data: {}, error: '' }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(e) {
+    const data = { ...this.state.data, [e.target.name]: e.target.value}
+    this.setState({ data: data, error: '' })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    axios.post('/api/login', this.state.data)
+      .then(res => {
+        Auth.setToken(res.data.token)
+        console.log(res.data)
+        console.log(this.props)
+        this.props.history.push('/dashboard')
+      })
+      .catch(() => this.setState({ error: 'Invalid Credentials' }))
+  }
   
   render() {
     const classes = this.props.classes
+    console.log(this.props)
     return (
       <Container component="main" maxWidth="sm">
         <CssBaseline />
@@ -24,7 +51,7 @@ class Login extends React.Component {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={this.handleSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -34,6 +61,7 @@ class Login extends React.Component {
               label="Email Address"
               name="email"
               autoFocus
+              onChange={this.handleChange}
             />
             <TextField
               variant="outlined"
@@ -44,6 +72,7 @@ class Login extends React.Component {
               label="Password"
               type="password"
               id="password"
+              onChange={this.handleChange}
             />
             <Button
               type="submit"
