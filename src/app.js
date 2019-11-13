@@ -107,6 +107,10 @@ const useStyles = makeStyles(theme => ({
     color: 'green',
     margin: '-5px 10px',
     fontSize: '30px'
+  }, 
+  popup: {
+    height: '40% !important',
+    width: '50% !important'
   }
 }))
 

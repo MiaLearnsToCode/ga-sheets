@@ -1,7 +1,8 @@
 import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography, Avatar, Container, Card, CardActionArea, CardMedia, CardContent, TextField } from '@material-ui/core'
+import { AppBar, Toolbar, IconButton, Typography, Avatar, Container, Card, CardContent, TextField } from '@material-ui/core'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
+import Popup from './Popup'
 
 class Dashboard extends React.Component {
   render() {
@@ -35,17 +36,7 @@ class Dashboard extends React.Component {
           <Container className={classes.greyContainer} >
             <div>
               <Card className={classes.card}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    alt="Contemplative Reptile"
-                    height="30%"
-                    image="https://htmlcolorcodes.com/assets/images/color-picker/html-color-codes-color-wheel-analogous-thumb-43afde7d.png"
-                    title="Contemplative Reptile"
-                  />
-
-                </CardActionArea>
-
+                <Popup type={'new'} classes={classes}/>
               </Card>
               <Typography className={classes.subtitle}>
                 New Sheet
@@ -53,15 +44,7 @@ class Dashboard extends React.Component {
             </div>
             <div>
               <Card className={classes.card}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    alt="Contemplative Reptile"
-                    height="30%"
-                    image="https://amptweaker.com/wp-content/uploads/2018/11/Color-Picker-Wheel-Desk6.png"
-                    title="Contemplative Reptile"
-                  />
-                </CardActionArea>
+                <Popup type={'join'} classes={classes}/>
               </Card>
               <Typography className={classes.subtitle}>
                 Join Sheet
