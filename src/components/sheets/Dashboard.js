@@ -1,13 +1,38 @@
 import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography, Avatar, Container, Card, CardContent, TextField } from '@material-ui/core'
+import { AppBar, Toolbar, IconButton, Typography, Avatar, Container, Card, TextField } from '@material-ui/core'
+import axios from 'axios'
+import Auth from '../../lib/Auth'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
+
 import Popup from './Popup'
+import Sheetcontainer from './Sheetcontainer'
 
 class Dashboard extends React.Component {
+  constructor() {
+    super()
+    this.state = { sheets: null }
+    
+  }
+
+  getSheets = async () => {
+    try {
+      const res = await axios.get('/api/sheets', {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      this.setState({ sheets: res.data })
+    } catch {
+      console.log('error')
+    }
+  }
+
+  componentDidMount() {
+    this.getSheets()
+  }
+
   render() {
     const classes = this.props.classes
-
+    if (!this.state.sheets) return null
     return (
       <div className={classes.root}>
         
@@ -52,18 +77,13 @@ class Dashboard extends React.Component {
             </div>
             
           </Container>
-          <Container maxWidth="lg">
-            <Card className={classes.cardLong}>
-              <CardContent className={classes.cardLongContent}>
-                <Typography>
-                  Sheet name
-                </Typography>
-                <Typography>
-                  Button?
-                </Typography>
-              </CardContent>
-            </Card>
-          </Container>
+          {
+            this.state.sheets.map(sheet => (
+              <Sheetcontainer key={sheet._id} sheet={sheet} classes={classes} />
+            ))
+          }
+          
+          
         </main>
       </div>
     )

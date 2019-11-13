@@ -18,7 +18,6 @@ class Popup extends React.Component {
   }
 
   render() {
-    const classes = this.props.classes
     const type = this.props.type
 
     return (
